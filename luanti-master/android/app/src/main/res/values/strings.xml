@@ -5,11 +5,11 @@
 	<string name="app_name">CubeWorld</string>
 	<string name="app_version">v1.0.0</string>
 	
-	<!-- Yapımcı Bilgisi -->
-	<string name="app_developer">Ahmed Emin Tokgöz</string>
-	<string name="app_developer_username">@ahmedemintokgoz2510-ctrl</string>
+	<!-- Yapımcı Bilgisi - ZODIAC GAMES -->
+	<string name="app_developer">Zodiac Games</string>
+	<string name="app_developer_studio">Zodiac Games Studio</string>
 	<string name="app_github_url">https://github.com/ahmedemintokgoz2510-ctrl/CubeWorldd</string>
-	<string name="app_copyright">© 2026 CubeWorld. All Rights Reserved.</string>
+	<string name="app_copyright">© 2026 Zodiac Games. All Rights Reserved.</string>
 	
 	<!-- Proje Açıklaması -->
 	<string name="app_description">Minecraft Bedrock tarzı sandbox oyunu. Bloklar dünyasında yaratıcı özgürlüğü keşfet!</string>
@@ -18,6 +18,7 @@
 	<!-- Ana Ekran (Splash Screen) -->
 	<string name="splash_welcome">CubeWorld\'e Hoş Geldin!</string>
 	<string name="splash_subtitle">Sandbox İçinde Sınırsızlık</string>
+	<string name="splash_developer">Zodiac Games tarafından yapılmıştır</string>
 	<string name="loading">Yükleniyor&#8230;</string>
 	<string name="loading_world">Dünya oluşturuluyor&#8230;</string>
 	
@@ -38,11 +39,12 @@
 	<!-- Hakkında Ekranı -->
 	<string name="about_title">CubeWorld Hakkında</string>
 	<string name="about_version">Sürüm: %s</string>
-	<string name="about_developer">Geliştirici: %s</string>
-	<string name="about_description">CubeWorld, Minecraft Bedrock oyun mekaniklerine dayanan, açık kaynak tabanlı bir sandbox oyunudur.</string>
-	<string name="about_features">Özellikler:\n• Sınırsız blok dünyası\n• Çok oyunculu (multiplayer) desteği\n• Arkadaş sistemi\n• Survival & Creative modları\n• Mobil optimizasyonu</string>
-	<string name="about_github">GitHub: %s</string>
+	<string name="about_developer">Geliştirici: Zodiac Games</string>
+	<string name="about_description">CubeWorld, Minecraft Bedrock oyun mekaniklerine dayanan, açık kaynak tabanlı bir sandbox oyunudur. Zodiac Games tarafından özel olarak geliştirilmiştir.</string>
+	<string name="about_features">Özellikler:\n• Sınırsız blok dünyası\n• Çok oyunculu (multiplayer) desteği\n• Arkadaş sistemi\n• Survival &amp; Creative modları\n• Mobil optimizasyon\n• Minecraft Bedrock kontrolleri</string>
+	<string name="about_github">GitHub: github.com/ahmedemintokgoz2510-ctrl/CubeWorldd</string>
 	<string name="about_license">Lisans: GNU LGPL 2.1</string>
+	<string name="about_studio">Studio: Zodiac Games</string>
 	
 	<!-- Hata Mesajları -->
 	<string name="no_web_browser">Web tarayıcısı bulunamadı</string>
@@ -72,5 +74,5 @@
 	<string name="multiplayer_join">Oyuna Katıl</string>
 	<string name="multiplayer_create">Oyun Oluştur</string>
 	<string name="multiplayer_invite_code">Davet Kodu</string>
-	
+
 </resources>

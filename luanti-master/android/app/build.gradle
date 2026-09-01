@@ -3,19 +3,34 @@ apply plugin: 'com.android.application'
 android {
 	ndkVersion "$ndk_version"
 	defaultConfig {
-		applicationId 'net.minetest.minetest'
+		// Zodiac Games - CubeWorld
+		applicationId 'com.zodiaczgames.cubeworld'
 		minSdkVersion 21
 		compileSdk = 34
 		targetSdkVersion 35
-		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
-		versionCode versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100 + versionBuild
+		
+		// Sürüm Bilgileri
+		versionName "1.0.0"
+		versionCode 100
+		
+		// Uygulama Meta Verileri
+		resConfigs "tr", "en"
+		
+		// Build Config
+		buildConfigField "String", "APP_NAME", '"CubeWorld"'
+		buildConfigField "String", "APP_DEVELOPER", '"Zodiac Games"'
+		buildConfigField "String", "APP_WEBSITE", '"https://zodiaczgames.studio"'
+		buildConfigField "String", "APP_GITHUB", '"https://github.com/ahmedemintokgoz2510-ctrl/CubeWorldd"'
+		buildConfigField "String", "GAME_ENGINE", '"Luanti"'
+		buildConfigField "boolean", "IS_MULTIPLAYER_ENABLED", "true"
+		buildConfigField "boolean", "IS_FRIENDS_SYSTEM_ENABLED", "true"
 	}
 
 	buildFeatures {
 		buildConfig true
 	}
 
-	// load properties
+	// Anahtar imzası özellikleri
 	Properties props = new Properties()
 	def propfile = file('../local.properties')
 	if (propfile.exists())
@@ -28,23 +43,31 @@ android {
 				storePassword props['keystore.password']
 				keyAlias props['key']
 				keyPassword props['key.password']
+				v2SigningEnabled true
 			}
 		}
 
 		buildTypes {
 			release {
 				minifyEnabled true
+				shrinkResources true
+				proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 				signingConfig signingConfigs.release
+			}
+			debug {
+				debuggable true
+				minifyEnabled false
 			}
 		}
 	}
 
-	// for multiple APKs
+	// Çoklu APK'ler
 	splits {
 		abi {
 			enable true
 			reset()
 			include 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+			universalApk true
 		}
 	}
 
@@ -52,10 +75,20 @@ android {
 		sourceCompatibility JavaVersion.VERSION_1_8
 		targetCompatibility JavaVersion.VERSION_1_8
 	}
-	namespace 'net.minetest.minetest'
+	
+	namespace 'com.zodiaczgames.cubeworld'
+	
+	// Derleme seçenekleri
+	buildTypes {
+		release {
+			ndk {
+				debugSymbolLevel 'FULL'
+			}
+		}
+	}
 }
 
-// Register one task for each locale file
+// Yerel ayarlar dosyasından özellikler yükle
 def localeFolder = layout.buildDirectory.dir("locale").get().asFile
 def projRoot = rootDir.parent
 def unsupportedLanguages = file("${projRoot}/src/unsupported_language_list.txt").readLines()
@@ -69,9 +102,9 @@ fileTree("${projRoot}/po").include("**/*.po").grep {
 
 	def task = tasks.register("compileTranslation[${lang}]", Exec) {
 		inputs.file(poFile)
-		outputs.file("${moPath}/luanti.mo")
+		outputs.file("${moPath}/cubeworld.mo")
 		doFirst { file(moPath).mkdirs() }
-		commandLine("msgfmt", "-o", "${moPath}/luanti.mo", poFile)
+		commandLine("msgfmt", "-o", "${moPath}/cubeworld.mo", poFile)
 	}
 	localeTasks << task
 }
@@ -80,12 +113,13 @@ tasks.register("compileTranslations") {
 	dependsOn localeTasks
 }
 
+// Varlıkları hazırla
 def assetsFolder = layout.buildDirectory.dir("assets").get().asFile
 tasks.register("prepareAssets") {
 	dependsOn tasks.named("compileTranslations")
 
 	doFirst {
-		logger.lifecycle('Preparing assets at {}', assetsFolder)
+		logger.lifecycle('CubeWorld - Varlıklar hazırlanıyor: {}', assetsFolder)
 	}
 	doLast {
 		copy {
@@ -133,5 +167,29 @@ clean {
 
 dependencies {
 	implementation project(':native')
+	
+	// AndroidX
 	implementation 'androidx.appcompat:appcompat:1.6.1'
+	implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+	
+	// Material Design
+	implementation 'com.google.android.material:material:1.9.0'
+	
+	// Networking
+	implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+	
+	// JSON İşleme
+	implementation 'com.google.code.gson:gson:2.10.1'
+	
+	// Database
+	implementation 'androidx.room:room-runtime:2.5.2'
+	annotationProcessor 'androidx.room:room-compiler:2.5.2'
+	
+	// Lifecycle
+	implementation 'androidx.lifecycle:lifecycle-runtime:2.6.1'
+	implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.1'
+	
+	// Test
+	testImplementation 'junit:junit:4.13.2'
+	androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

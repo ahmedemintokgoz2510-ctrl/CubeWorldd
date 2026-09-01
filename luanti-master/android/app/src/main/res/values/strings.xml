@@ -1,12 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="label">Luanti</string>
-	<string name="loading">Loading&#8230;</string>
-	<string name="notification_channel_name">General notification</string>
-	<string name="notification_channel_description">Notifications from Luanti</string>
-	<string name="unzip_notification_title">Loading Luanti</string>
-	<string name="unzip_notification_description">Less than 1 minute&#8230;</string>
-	<string name="game_notification_title">Luanti is running</string>
-	<string name="ime_dialog_done">Done</string>
-	<string name="no_web_browser">No web browser found</string>
+	<!-- Ana Uygulama Adı -->
+	<string name="label">CubeWorld</string>
+	<string name="app_name">CubeWorld</string>
+	<string name="app_version">v1.0.0</string>
+	
+	<!-- Yapımcı Bilgisi -->
+	<string name="app_developer">Ahmed Emin Tokgöz</string>
+	<string name="app_developer_username">@ahmedemintokgoz2510-ctrl</string>
+	<string name="app_github_url">https://github.com/ahmedemintokgoz2510-ctrl/CubeWorldd</string>
+	<string name="app_copyright">© 2026 CubeWorld. All Rights Reserved.</string>
+	
+	<!-- Proje Açıklaması -->
+	<string name="app_description">Minecraft Bedrock tarzı sandbox oyunu. Bloklar dünyasında yaratıcı özgürlüğü keşfet!</string>
+	<string name="app_tagline">Yaratıl • Keşfet • Oyna</string>
+	
+	<!-- Ana Ekran (Splash Screen) -->
+	<string name="splash_welcome">CubeWorld\'e Hoş Geldin!</string>
+	<string name="splash_subtitle">Sandbox İçinde Sınırsızlık</string>
+	<string name="loading">Yükleniyor&#8230;</string>
+	<string name="loading_world">Dünya oluşturuluyor&#8230;</string>
+	
+	<!-- Bildirimler -->
+	<string name="notification_channel_name">Genel Bildirim</string>
+	<string name="notification_channel_description">CubeWorld\'den gelen bildirimler</string>
+	<string name="unzip_notification_title">CubeWorld Yükleniyor</string>
+	<string name="unzip_notification_description">1 dakikadan az&#8230;</string>
+	<string name="game_notification_title">CubeWorld Çalışıyor</string>
+	
+	<!-- Menü ve Butonlar -->
+	<string name="ime_dialog_done">Bitti</string>
+	<string name="button_start_game">Oyunu Başlat</string>
+	<string name="button_settings">Ayarlar</string>
+	<string name="button_about">Hakkında</string>
+	<string name="button_exit">Çık</string>
+	
+	<!-- Hakkında Ekranı -->
+	<string name="about_title">CubeWorld Hakkında</string>
+	<string name="about_version">Sürüm: %s</string>
+	<string name="about_developer">Geliştirici: %s</string>
+	<string name="about_description">CubeWorld, Minecraft Bedrock oyun mekaniklerine dayanan, açık kaynak tabanlı bir sandbox oyunudur.</string>
+	<string name="about_features">Özellikler:\n• Sınırsız blok dünyası\n• Çok oyunculu (multiplayer) desteği\n• Arkadaş sistemi\n• Survival & Creative modları\n• Mobil optimizasyonu</string>
+	<string name="about_github">GitHub: %s</string>
+	<string name="about_license">Lisans: GNU LGPL 2.1</string>
+	
+	<!-- Hata Mesajları -->
+	<string name="no_web_browser">Web tarayıcısı bulunamadı</string>
+	<string name="error_loading_game">Oyun yüklenirken hata oluştu</string>
+	<string name="error_saving_game">Oyun kaydedilirken hata oluştu</string>
+	
+	<!-- Kontroller (Minecraft Bedrock Tarzı) -->
+	<string name="control_forward">İleri (W)</string>
+	<string name="control_backward">Geri (S)</string>
+	<string name="control_left">Sol (A)</string>
+	<string name="control_right">Sağ (D)</string>
+	<string name="control_jump">Zıpla (Boşluk)</string>
+	<string name="control_sneak">Eğil (Shift)</string>
+	<string name="control_dig">Blok Kır (Sol Tık)</string>
+	<string name="control_place">Blok Koy (Sağ Tık)</string>
+	<string name="control_inventory">Envanter (E)</string>
+	
+	<!-- Arkadaş Sistemi -->
+	<string name="friends_title">Arkadaşlar</string>
+	<string name="friends_add">Arkadaş Ekle</string>
+	<string name="friends_online">Çevrimiçi</string>
+	<string name="friends_offline">Çevrimdışı</string>
+	<string name="friends_invite">Davet Et</string>
+	<string name="friends_remove">Sil</string>
+	
+	<!-- Multiplayer -->
+	<string name="multiplayer_join">Oyuna Katıl</string>
+	<string name="multiplayer_create">Oyun Oluştur</string>
+	<string name="multiplayer_invite_code">Davet Kodu</string>
+	
 </resources>

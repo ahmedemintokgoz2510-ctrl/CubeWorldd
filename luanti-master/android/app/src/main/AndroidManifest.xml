@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-    android:installLocation="auto">
+    android:installLocation="auto"
+    package="com.zodiaczgames.cubeworld">
 
+	<!-- İzinler -->
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	
 	<uses-feature android:glEsVersion="0x00020000" />
 
 	<application
-		android:allowBackup="false"
+		android:allowBackup="true"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/label"
 		android:resizeableActivity="false"
 		android:appCategory="game"
+		android:usesCleartextTraffic="false"
 		tools:ignore="UnusedAttribute">
 
+		<!-- Meta Veriler -->
 		<meta-data
 			android:name="android.max_aspect"
 			android:value="3.0" />
+		<meta-data
+			android:name="android.app.developer"
+			android:value="Zodiac Games" />
+		<meta-data
+			android:name="android.app.version_name"
+			android:value="1.0.0" />
 
+		<!-- Ana Aktivite (Splash Screen) -->
 		<activity
 			android:name=".MainActivity"
 			android:configChanges="orientation|keyboardHidden|navigation|screenSize"
@@ -32,6 +47,7 @@
 			</intent-filter>
 		</activity>
 
+		<!-- Oyun Aktivitesi -->
 		<activity
 			android:name=".GameActivity"
 			android:configChanges="orientation|keyboard|keyboardHidden|navigation|screenSize|smallestScreenSize"
@@ -46,15 +62,52 @@
 			</intent-filter>
 		</activity>
 
+		<!-- Hakkında Aktivitesi -->
+		<activity
+			android:name=".AboutActivity"
+			android:exported="true"
+			android:parentActivityName=".MainActivity"
+			android:screenOrientation="portrait"
+			android:theme="@style/AppTheme" />
+
+		<!-- Arkadaş Sistemi Aktivitesi -->
+		<activity
+			android:name=".FriendsActivity"
+			android:exported="true"
+			android:parentActivityName=".MainActivity"
+			android:screenOrientation="portrait"
+			android:theme="@style/AppTheme" />
+
+		<!-- Ayarlar Aktivitesi -->
+		<activity
+			android:name=".SettingsActivity"
+			android:exported="true"
+			android:parentActivityName=".MainActivity"
+			android:screenOrientation="portrait"
+			android:theme="@style/AppTheme" />
+
+		<!-- Zip Çıkarma Servisi -->
 		<service
 			android:name=".UnzipService"
 			android:enabled="true"
 			android:exported="false" />
 
-		<!-- FIXME: we can probably drop this and use the documents provider to share files -->
+		<!-- Multiplayer Servisi -->
+		<service
+			android:name=".MultiplayerService"
+			android:enabled="true"
+			android:exported="false" />
+
+		<!-- Arkadaş Sistemi Servisi -->
+		<service
+			android:name=".FriendsSyncService"
+			android:enabled="true"
+			android:exported="false" />
+
+		<!-- Dosya Paylaşım Sağlayıcısı -->
 		<provider
 			android:name="androidx.core.content.FileProvider"
-			android:authorities="net.minetest.minetest.fileprovider"
+			android:authorities="com.zodiaczgames.cubeworld.fileprovider"
 			android:grantUriPermissions="true"
 			android:exported="false">
 			<meta-data
@@ -62,9 +115,10 @@
 				android:resource="@xml/filepaths" />
 		</provider>
 
+		<!-- Doküman Sağlayıcısı -->
 		<provider
-            android:name=".LuantiDocumentsProvider"
-            android:authorities="net.minetest.minetest.documents"
+            android:name=".CubeWorldDocumentsProvider"
+            android:authorities="com.zodiaczgames.cubeworld.documents"
             android:exported="true"
             android:grantUriPermissions="true"
             android:permission="android.permission.MANAGE_DOCUMENTS">
@@ -73,6 +127,6 @@
             </intent-filter>
         </provider>
 
-</application>
+	</application>
 
 </manifest>

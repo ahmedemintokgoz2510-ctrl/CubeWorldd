@@ -1,0 +1,38 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+    
+    - name: Extract ZIP
+      run: |
+        unzip -q CubeWorld-Personalized.zip
+        mv luanti-master cubebuild
+    
+    - name: Build APK
+      run: |
+        cd cubebuild/android
+        chmod +x gradlew
+        ./gradlew assembleRelease
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: CubeWorld-APK
+        path: cubebuild/android/app/build/outputs/apk/release/app-release.apk
